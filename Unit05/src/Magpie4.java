@@ -31,14 +31,11 @@ public class Magpie4
 	public String getResponse(String statement)
 	{
 		String response = "";
+		statement = statement.trim();
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
-		}
-
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
+			return response;
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
@@ -47,11 +44,61 @@ public class Magpie4
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (findKeyword(statement, "dog") >= 0
+				|| findKeyword(statement,"cat") >= 0
+				|| findKeyword(statement,"fish") >= 0
+				|| findKeyword(statement,"turtle") >= 0)
+		{
+			response = "Tell me more about your pets.";
+		}
+		else if (findKeyword(statement,"mauro") >= 0
+				|| findKeyword(statement,"baum") >= 0
+				|| findKeyword(statement,"corman") >= 0
+				|| findKeyword(statement,"kortman") >= 0)
+		{
+			response = "Tell me more about your teacher.";
+		}
+		else if (findKeyword(statement,"basketball") >= 0
+				|| findKeyword(statement,"swimming") >= 0
+				|| findKeyword(statement,"football") >= 0
+				|| findKeyword(statement,"soccer") >= 0)
+		{
+			response = "Tell me more about your sport.";
+		}
+		else if (findKeyword(statement,"ramen") >= 0
+				|| findKeyword(statement,"rice") >= 0
+				|| findKeyword(statement,"pasta") >= 0
+				|| findKeyword(statement,"pizza") >= 0)
+		{
+			response = "Tell me more about your favorite food.";
+		}
+		else if (findKeyword(statement,"iron man") >= 0
+				|| findKeyword(statement,"spiderman") >= 0
+				|| findKeyword(statement,"deadpool") >= 0
+				|| findKeyword(statement,"ant man") >= 0)
+		{
+			response = "Tell me more about your favorite superhero.";
+		}
+		else if (findKeyword(statement, "no") >= 0)
+		{
+			response = "Why so negative?";
+		}
 
 		// Responses which require transformations
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
+		}
+		else if (findKeyword(statement, "I want", 0) >= 0)
+		{
+			response = transformIWantStatement(statement);
+		}
+		else if (findKeyword(statement, "I", 0) >= 0
+				&& findKeyword(statement, "you", findKeyword(statement, "I", 0)) >= 0)
+		{
+
+			response = transformIYouStatement(statement);
+			
 		}
 
 		else
@@ -71,6 +118,36 @@ public class Magpie4
 			}
 		}
 		return response;
+	}
+	
+	private String transformIWantStatement(String statement) {
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I want", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "Would you really be happy if you had " + restOfStatement + "?";
+	}
+	private String transformIYouStatement(String statement) {
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		
+		int psnOfYou = findKeyword (statement, "I", 0);
+		int psnOfMe = findKeyword (statement, "you", psnOfYou + 1);
+		
+		String restOfStatement = statement.substring(psnOfYou + 1, psnOfMe).trim();
+		return "Why do you " + restOfStatement + " me?";
 	}
 	
 	/**
