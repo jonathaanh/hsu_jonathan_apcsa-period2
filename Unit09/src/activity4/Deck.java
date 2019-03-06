@@ -15,6 +15,7 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
+	//private List<Card> cards;
 	private Card[] cards;
 
 	/**
@@ -37,10 +38,12 @@ public class Deck {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		size = ranks.length*suits.length;
 		cards = new Card[size];
+		//cards = new List<Card>;
 		int index = 0;
 		for(int i = 0; i<suits.length;i++) {
 			for(int n = 0; n<ranks.length;n++) {
 				cards[index] = new Card(ranks[n], suits[i], values[n]) ;
+				
 				index++;
 			}
 		}
