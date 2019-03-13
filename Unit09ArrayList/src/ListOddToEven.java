@@ -21,6 +21,7 @@ public class ListOddToEven
 		if(firstOdd!=-1) {
 			for(int i = ray.size()-1; i> 0;i--) {
 				if(ray.get(i)%2==0) {
+					
 					LastEven = i;
 					break;
 				}
