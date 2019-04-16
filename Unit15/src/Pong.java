@@ -53,11 +53,6 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		keys = new boolean[4];
 		ball.setColor(Color.red);
    
-		setBackground(Color.WHITE);
-		setVisible(true);
-		
-		new Thread(this).start();
-		addKeyListener(this);
 		
 		
    }
