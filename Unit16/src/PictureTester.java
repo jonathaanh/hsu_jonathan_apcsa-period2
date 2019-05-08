@@ -164,15 +164,15 @@ public class PictureTester
     //testKeepOnlyBlue();
    // testKeepOnlyRed();
     //testKeepOnlyGreen();
-    //testNegate();
+    testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
-	//testMirrorHorizontal();
+	testMirrorHorizontal();
 	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
-    //testMirrorGull();
+    testMirrorGull();
 	  //testMirrorVerticalRightToLeft();
     //testMirrorDiagonal();
     //testMyCollage();
