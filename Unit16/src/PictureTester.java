@@ -16,6 +16,18 @@ public class PictureTester
     beach.zeroBlue();
     beach.explore();
   }
+  public static void testEncodeDecode()
+  {
+    Picture beach = new Picture("beach.jpg");
+    Picture msg = new Picture("msg.jpg");
+    Picture msg1 = new Picture("apple_icon.jpg");
+    msg1.explore();
+    beach.explore();
+    beach.encode(msg1);
+    beach.explore();
+    beach = beach.decode();
+    beach.explore();
+  }
   
   public static void testKeepOnlyBlue()
   {
@@ -160,19 +172,20 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	  testEncodeDecode();
     //testZeroBlue();
     //testKeepOnlyBlue();
    // testKeepOnlyRed();
     //testKeepOnlyGreen();
-    testNegate();
+   // testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
-	testMirrorHorizontal();
+	//testMirrorHorizontal();
 	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+  //  testMirrorGull();
 	  //testMirrorVerticalRightToLeft();
     //testMirrorDiagonal();
     //testMyCollage();
